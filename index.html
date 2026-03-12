@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Expense Tracker</h1>
+
+    <div class="header-controls">
+        <div class="dropdown">Daily <i class="fa fa-caret-down"></i></div>
+
+        <div class="date-picker">
+            <i class="fas fa-calendar"></i>
+            March 11, 2026
+        </div>
+
+        <div class="export-button">
+            <i class="fas fa-download"></i>
+            Export
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+
+    <div class="dashboard-grid">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Monthly Income</h3>
+                <button class="card-menu">
+                    <i class="fas fa-ellipsis"></i>
+                </button>
+            </div>
+
+            <div class="amount">$7,492.00</div>
+
+            <div class="change">
+                <i class="fas fa-arrow-up"></i>
+                12% vs last month
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Monthly Expenses</h3>
+                <button class="card-menu">
+                    <i class="fas fa-ellipsis"></i>
+                </button>
+            </div>
+
+            <div class="amount">$6,490.00</div>
+
+            <div class="change">
+                <i class="fas fa-arrow-up"></i>
+                12% vs last month
+            </div>
+        </div>
+
+        <div class="card my-card">
+
+            <div class="card-header">
+                <h3 class="card-title">My Card</h3>
+                <button class="card-menu">
+                    <i class="fas fa-ellipsis"></i>
+                </button>
+            </div>
+
+            <div style="font-size:0.75rem;opacity:0.8;margin-bottom:1rem">
+                Linked to your primary wallet
+            </div>
+
+            <div class="card-chip"></div>
+            <div class="card-number">4400 5500 6600 7700</div>
+            <div class="card-holder">Megan Chng</div>
+
+            <div class="spending-section">
+                <div style="margin-bottom:0.5rem;font-size:0.75rem">Spending Limit</div>
+                <div class="spending-limit">$4,000</div>
+                <div class="spending-used">used from $1,293.00</div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card-transactions-section">
+        <div class="card-header">
+            <h3 class="card-title">Recent Transactions</h3>
+            <div class="filters">
+                <button class="filter-btn">
+                    <i class="fas fa-sort"></i>
+                    Sort
+                </button>
+                <button class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    Filter
+                </button>
+            </div>
+        </div>
+
+        <table class="transactions-table">
+            <thead>
+            <tr>
+                <th>Date <i class="fas fa-sort"></i></th>
+                <th>Category <i class="fas fa-sort"></i></th>
+                <th>Amount <i class="fas fa-sort"></i></th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Jan 21, 2026</td>
+                <td>Grocery</td>
+                <td>$103.00</td>
+                <td><span class="status-success">Success</span></td>
+                <td>
+                    <button class="action-btn">
+                        <i class="fas fa-ellipsis"></i>
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Feb 12, 2026</td>
+                <td>Drinks</td>
+                <td>$13.00</td>
+                <td><span class="status-success">Success</span></td>
+                <td>
+                    <button class="action-btn">
+                        <i class="fas fa-ellipsis"></i>
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>March 1, 2026</td>
+                <td>Travel</td>
+                <td>$382.00</td>
+                <td><span class="status-success">Success</span></td>
+                <td>
+                    <button class="action-btn">
+                        <i class="fas fa-ellipsis"></i>
+                    </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="add-button">
+    <button class="fab fab-income" onclick="openIncomeModel()" title="Add Income">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <button class="fab fab-expense" onclick="openExpenseModel()" title="Add Expense">
+        <i class="fas fa-minus"></i>
+    </button>
+</div>
+
+<div id="incomeModel" class="model">
+    <div class="model-content">
+
+        <div class="model-header">
+            <h2 class="model-title">Add Income</h2>
+            <button class="close-btn" onclick="closeModel('incomeModel')">&times;</button>
+        </div>
+
+        <div class="model-body">
+
+            <form id="incomeForm" autocomplete="off">
+
+                <div class="form-group">
+                    <label class="form-label">Amount</label>
+                    <input type="number" class="form-input" id="incomeAmount" placeholder="Enter Amount" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-select" id="incomeCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Paycheck">Paycheck</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-input" id="incomeDescription" placeholder="Enter Description" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-input" id="incomeDate" required>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="model-footer">
+            <button class="btn btn-secondary" onclick="closeModel('incomeModel')">Cancel</button>
+            <button class="btn btn-primary" onclick="addIncome()">Add Income</button>
+        </div>
+
+    </div>
+</div>
+
+<div id="expenseModel" class="model">
+    <div class="model-content">
+
+        <div class="model-header">
+            <h2 class="model-title">Add Expense</h2>
+            <button class="close-btn" onclick="closeModel('expenseModel')">&times;</button>
+        </div>
+
+        <div class="model-body">
+
+            <form id="expenseForm" autocomplete="off">
+
+                <div class="form-group">
+                    <label class="form-label">Amount</label>
+                    <input type="number" class="form-input" id="expenseAmount" placeholder="Enter Amount" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-select" id="expenseCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Drinks">Drinks</option>
+                        <option value="Travel">Travel</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-input" id="expenseDescription" placeholder="Enter Description" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-input" id="expenseDate" required>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="model-footer">
+            <button class="btn btn-secondary" onclick="closeModel('expenseModel')">Cancel</button>
+            <button class="btn btn-primary" onclick="addExpense()">Add Expense</button>
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
